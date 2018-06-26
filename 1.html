@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Shop</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="grid">
+      <div>
+        <p><a href="1.html#!shop.html"><img src="image/critter_logo.png" width="150px"></a></p>
+      </div>
+      <div>
+        <ul>
+          <li><a href="#!cart.html" onclick="loadPage('cart.html');">cart</a></li>
+          <li><a href="#!contact.html" onclick="loadPage('contact.html');">contact</a></li>
+          <li><a href="#!story.html" onclick="loadPage('story.html');">story</a></li>
+          <li><a href="#!shop.html" onclick="loadPage('shop.html');">shop</a></li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <article></article>
+    <script>
+      function loadPage(name){
+        fetch(name).then(function(response){
+         response.text().then(function(text){
+         document.querySelector('article').innerHTML = text;
+         })
+       });
+      }
+      if(location.hash){
+        fetchPage(location.hash.substr(2));
+      } else {
+        loadPage('#welcome');
+      }
+    </script>
+  </body>
+</html>
